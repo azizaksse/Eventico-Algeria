@@ -145,6 +145,30 @@ const caseStudies = [
   },
 ]
 
+const EventCard = ({ title, tag, text, bullets, image }) => (
+  <div className="event-card">
+    <div className="event-media">
+      <picture>
+        <source srcSet={image} type="image/webp" />
+        <img src={image} alt={title} loading="lazy" decoding="async" />
+      </picture>
+      <span className="event-tag">{tag}</span>
+    </div>
+    <div className="event-body">
+      <h3>{title}</h3>
+      <p className="event-text">{text}</p>
+      <ul>
+        {bullets.map((bullet) => (
+          <li key={bullet}>
+            <span className="event-dot" />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)
+
 const socialLinks = [
   {
     label: 'Facebook',
@@ -276,9 +300,9 @@ function App() {
 
         <section id="problemes" className="section muted">
           <div className="section-header reveal">
-            <p className="eyebrow">Le marché</p>
-            <h2>Problèmes du marché que nous résolvons</h2>
-            <p className="intro">Nous savons que l'organisation d'événements souffre de :</p>
+            <span className="eyebrow">LE MARCHÉ</span>
+            <h2 className="section-title">Problèmes du marché que nous résolvons</h2>
+            <p className="section-subtitle">Nous savons que l'organisation d'événements souffre de :</p>
           </div>
           <div className="card-grid reveal">
             {marketProblems.map((item, idx) => (
@@ -294,9 +318,9 @@ function App() {
 
         <section id="services" className="section">
           <div className="section-header reveal">
-            <p className="eyebrow">Avant / Pendant / Après</p>
-            <h2>Nos services</h2>
-            <p className="intro">
+            <span className="eyebrow">AVANT / PENDANT / APRÈS</span>
+            <h2 className="section-title">Nos services</h2>
+            <p className="section-subtitle">
               Une prise en charge avant, pendant et après votre événement.
             </p>
           </div>
@@ -348,9 +372,9 @@ function App() {
 
         <section id="packs" className="section muted">
           <div className="section-header reveal">
-            <p className="eyebrow">Offres</p>
-            <h2>Nos Packs</h2>
-            <p className="intro">Des offres adaptées à vos objectifs.</p>
+            <span className="eyebrow">OFFRES</span>
+            <h2 className="section-title">Nos Packs</h2>
+            <p className="section-subtitle">Des offres adaptées à vos objectifs.</p>
           </div>
           <div className="pack-grid reveal">
             {packs.map((pack) => (
@@ -372,8 +396,8 @@ function App() {
 
         <section id="pourquoi" className="section">
           <div className="section-header reveal">
-            <p className="eyebrow">Notre signature</p>
-            <h2>Pourquoi nous choisir ?</h2>
+            <span className="eyebrow">NOTRE SIGNATURE</span>
+            <h2 className="section-title">Pourquoi nous choisir ?</h2>
           </div>
           <div className="why-grid reveal">
             {whyUs.map((item, idx) => (
@@ -389,47 +413,24 @@ function App() {
 
         <section id="evenements" className="section muted">
           <div className="section-header reveal">
-            <p className="eyebrow">Cas</p>
-            <h2>Les événements réalisés cette année</h2>
-            <p className="intro">
+            <span className="eyebrow">CAS</span>
+            <h2 className="section-title">Les événements réalisés cette année</h2>
+            <p className="section-subtitle">
               Quelques exemples d'événements que nous avons accompagnés.
             </p>
           </div>
           <div className="case-grid reveal">
             {caseStudies.map((study, idx) => (
-              <div key={study.title} className="card case">
-                <div className="case-cover">
-                  <picture>
-                    <source srcSet={study.image} type="image/webp" />
-                    <img
-                      src={study.image}
-                      alt={study.title}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
-                  <div className={`case-overlay gradient-${idx + 1}`} />
-                  <span className="case-tag">{study.tag}</span>
-                </div>
-                <div className="case-body">
-                  <h3>{study.title}</h3>
-                  <p className="case-text">{study.text}</p>
-                  <ul>
-                    {study.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              <EventCard key={study.title} {...study} />
             ))}
           </div>
         </section>
 
         <section id="contact" className="section contact-block reveal">
           <div className="cta-card">
-            <p className="eyebrow center">Travaillons ensemble</p>
-            <h2>Prêt à donner vie à votre événement ?</h2>
-            <p className="intro">
+            <span className="eyebrow center">TRAVAILLONS ENSEMBLE</span>
+            <h2 className="section-title">Prêt à donner vie à votre événement ?</h2>
+            <p className="section-subtitle">
               Parlez-nous de votre vision, nous la transformons en expérience.
             </p>
             <a href="https://wa.me/213782461502" className="btn primary large">
