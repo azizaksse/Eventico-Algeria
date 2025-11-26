@@ -30,7 +30,7 @@ const targets = [
     input: 'stock.jpeg',
     output: 'stock.webp',
     width: 1400,
-    quality: 72,
+    quality: 70,
     label: 'Stork case',
   },
   {
