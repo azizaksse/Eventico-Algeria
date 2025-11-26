@@ -168,6 +168,7 @@ const socialLinks = [
 
 function App() {
   const [navSmall, setNavSmall] = useState(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setNavSmall(window.scrollY > 16)
@@ -175,6 +176,15 @@ function App() {
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileNavOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileNavOpen])
+
+  const closeMobileNav = () => setMobileNavOpen(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -201,15 +211,27 @@ function App() {
             <span className="brand-tag">YOUR VISION OUR MISSION</span>
           </div>
         </div>
-        <nav>
-          <a href="#accueil">Accueil</a>
-          <a href="#problemes">Problèmes du marché</a>
-          <a href="#services">Nos services</a>
-          <a href="#packs">Nos Packs</a>
-          <a href="#evenements">Événements réalisés</a>
-          <a href="#pourquoi">Pourquoi nous choisir ?</a>
-          <a href="#contact" className="btn ghost">CONTACTEZ NOUS</a>
+        
+        <button
+          className={`nav-toggle ${mobileNavOpen ? 'open' : ''}`}
+          onClick={() => setMobileNavOpen((v) => !v)}
+          aria-label="Ouvrir ou fermer la navigation"
+          aria-expanded={mobileNavOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav className={`nav-links ${mobileNavOpen ? 'open' : ''}`}>
+          <a href="#accueil" onClick={closeMobileNav}>Accueil</a>
+          <a href="#problemes" onClick={closeMobileNav}>Probl�mes du march�</a>
+          <a href="#services" onClick={closeMobileNav}>Nos services</a>
+          <a href="#packs" onClick={closeMobileNav}>Nos Packs</a>
+          <a href="#evenements" onClick={closeMobileNav}>�v�nements r�alis�s</a>
+          <a href="#pourquoi" onClick={closeMobileNav}>Pourquoi nous choisir ?</a>
+          <a href="#contact" className="btn ghost" onClick={closeMobileNav}>CONTACTEZ NOUS</a>
         </nav>
+        {mobileNavOpen && <div className="nav-overlay" onClick={closeMobileNav} />}
       </header>
 
       <main>
@@ -466,3 +488,6 @@ function App() {
 }
 
 export default App
+
+
+
