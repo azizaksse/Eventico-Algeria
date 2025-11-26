@@ -32,6 +32,7 @@ const marketProblems = [
   "Absence d'identité professionnelle cohérente",
   'Accueil et gestion des invités désorganisés',
 ]
+const problemIcons = ['🧭', '🛠️', '🎯', '🤝']
 
 const servicePhases = [
   {
@@ -44,7 +45,7 @@ const servicePhases = [
     ],
   },
   {
-    title: "Pendant l'événement",
+    title: "pendant l'événement",
     image: '/services/pendant-evenement.webp',
     items: [
       'Coordination sur site (accueil, timing, logistique)',
@@ -260,42 +261,43 @@ function App() {
 
       <main>
         <section id="accueil" className="hero section reveal">
-          <div className="hero-text">
-            <div className="pill">OFFRE DE SERVICE</div>
-            <h1 className="hero-title">
-              <span className="logo-word gradient-text">EVENTICO</span> <br />
-              <span className="highlight-sequence">
-                <span className="highlight">YOUR VISION</span>{' '}
-                <span className="highlight delay">OUR MISSION</span>
-              </span>
-            </h1>
-            <p className="hero-paragraph">
-              Eventico n'est pas une simple agence d'organisation d'événements.
-              C'est une équipe de créatifs qui transforme les idées en expériences
-              vivantes. Nous croyons qu'un événement réussi commence par
-              une vision claire et se concrétise de l'idée à la réalisation.
-            </p>
-            <div className="hero-actions">
-              <a href="#contact" className="btn primary">CONTACTEZ NOUS</a>
-              <a href="#services" className="text-link">Découvrir nos services</a>
-            </div>
-            <div className="contact-strip">
-              +2137 82 46 15 02 / +2135 42 88 50 55 / +2135 52 55 33 24
-            </div>
+          <div className="hero-bg">
+            <picture>
+              <source srcSet="/eventico.webp" type="image/webp" />
+              <img
+                src="/eventico.webp"
+                alt="Équipe Eventico"
+                className="hero-bg-img"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
+            <div className="hero-bg-overlay" />
           </div>
-          <div className="hero-visual">
-            <div className="hero-image-frame">
-              <picture>
-                <source srcSet="/eventico.webp" type="image/webp" />
-                <img
-                  src="/eventico.webp"
-                  alt="Equipe Eventico pendant un événement"
-                  className="hero-photo"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                />
-              </picture>
+          <div className="hero-inner">
+            <div className="hero-text">
+              <div className="pill">OFFRE DE SERVICE</div>
+              <h1 className="hero-title">
+                <span className="logo-word gradient-text">EVENTICO</span> <br />
+                <span className="highlight-sequence">
+                  <span className="highlight">YOUR VISION</span>{' '}
+                  <span className="highlight delay">OUR MISSION</span>
+                </span>
+              </h1>
+              <p className="hero-paragraph">
+                Eventico n'est pas une simple agence d'organisation d'événements.
+                C'est une équipe de créatifs qui transforme les idées en expériences
+                vivantes. Nous croyons qu'un événement réussi commence par
+                une vision claire et se concrétise de l'idée à la réalisation.
+              </p>
+              <div className="hero-actions">
+                <a href="#contact" className="btn primary">CONTACTEZ NOUS</a>
+                <a href="#services" className="text-link">Découvrir nos services</a>
+              </div>
+              <div className="contact-strip">
+                +2137 82 46 15 02 / +2135 42 88 50 55 / +2135 52 55 33 24
+              </div>
             </div>
           </div>
         </section>
@@ -311,7 +313,7 @@ function App() {
               {marketProblems.map((item, idx) => (
                 <div key={item} className="card shadowed problem-card">
                   <div className="icon-circle">
-                    {['??', '??', '??', '??'][idx]}
+                    {problemIcons[idx % problemIcons.length]}
                   </div>
                   <p>{item}</p>
                 </div>
@@ -319,7 +321,7 @@ function App() {
               {marketProblems.map((item, idx) => (
                 <div key={`${item}-dupe`} className="card shadowed problem-card">
                   <div className="icon-circle">
-                    {['??', '??', '??', '??'][idx]}
+                    {problemIcons[idx % problemIcons.length]}
                   </div>
                   <p>{item}</p>
                 </div>
@@ -330,7 +332,7 @@ function App() {
 
         <section id="services" className="section">
           <div className="section-header reveal">
-            <span className="eyebrow">AVANT / PENDANT / APRÈS</span>
+            <span className="eyebrow">AVANT / pendant / APRÈS</span>
             <h2 className="section-title">Nos services</h2>
             <p className="section-subtitle">
               Une prise en charge avant, pendant et après votre événement.
@@ -372,7 +374,7 @@ function App() {
               </div>
               <div className="step">
                 <span className="dot">2</span>
-                <p>Pendant</p>
+                <p>pendant</p>
               </div>
               <div className="step">
                 <span className="dot">3</span>
@@ -501,6 +503,11 @@ function App() {
 }
 
 export default App
+
+
+
+
+
 
 
 

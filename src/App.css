@@ -265,24 +265,25 @@ h3 {
 }
 
 .problems-track {
+  --marquee-speed: 25s;
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: problems-marquee 25s linear infinite;
+  animation: problems-marquee var(--marquee-speed) linear infinite;
 }
 
 @keyframes problems-marquee {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(0%);
   }
 
   100% {
-    transform: translateX(0%);
+    transform: translateX(-50%);
   }
 }
 
 .problems-marquee:hover .problems-track {
-  animation-duration: 40s;
+  --marquee-speed: 40s;
 }
 
 .problem-card {
@@ -290,50 +291,52 @@ h3 {
 }
 
 .hero {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 32px;
-  align-items: center;
-  padding-top: 96px;
   position: relative;
+  overflow: hidden;
+  padding-top: 112px;
+  padding-bottom: 64px;
   min-height: 70vh;
 }
 
-.hero-visual {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.hero-image-frame {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 4 / 5;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 26px 50px rgba(15, 23, 42, 0.16);
-  background: rgba(241, 245, 249, 0.8);
-}
-
-.hero-visual picture,
-.hero-visual img {
+.hero-bg img,
+.hero-bg picture {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.hero-photo {
+.hero-bg-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  filter: none;
-  opacity: 1;
-  border-radius: 24px;
-  z-index: 0;
-  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 40%, #fdf4f4 100%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
 }
 
 .gradient-text {

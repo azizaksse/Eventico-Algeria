@@ -6,7 +6,7 @@ const projectRoot = path.resolve(process.cwd(), 'public')
 
 const targets = [
   {
-    input: 'eventico.jpg',
+    input: 'eventico.png',
     output: 'eventico.webp',
     width: 1600,
     quality: 72,
