@@ -213,23 +213,24 @@ h2 {
   position: relative;
 }
 
+.hero-visual picture,
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .hero-photo {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center top;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   filter: none;
   opacity: 1;
   border-radius: 24px;
   z-index: 0;
   overflow: hidden;
-}
-
-.hero-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: none;
 }
 
 .gradient-text {
@@ -490,12 +491,21 @@ h2 {
   height: 180px;
   border-radius: 16px;
   margin: -6px -6px 14px;
-  background-size: cover;
-  background-position: center;
   position: relative;
   overflow: hidden;
-  filter: none;
   border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.service-cover picture,
+.service-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.service-cover img {
+  object-fit: cover;
+  transform: scale(1.01);
 }
 
 .service-cover::after {
@@ -696,10 +706,20 @@ h2 {
   position: relative;
   height: 180px;
   background: #e5e7eb;
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
   filter: none;
+}
+
+.case-cover picture,
+.case-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.case-cover img {
+  object-fit: cover;
+  transform: scale(1.02);
 }
 
 .case-overlay {

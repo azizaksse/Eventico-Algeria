@@ -36,7 +36,7 @@ const marketProblems = [
 const servicePhases = [
   {
     title: "Avant l'événement",
-    image: '/services/avant-evenement.jpg',
+    image: '/services/avant-evenement.webp',
     items: [
       'Définition du concept et planification stratégique',
       'Élaboration des dossiers de sponsoring et présentations commerciales',
@@ -45,7 +45,7 @@ const servicePhases = [
   },
   {
     title: "Pendant l'événement",
-    image: '/services/pendant-evenement.jpg',
+    image: '/services/pendant-evenement.webp',
     items: [
       'Coordination sur site (accueil, timing, logistique)',
       'Support technique (son, lumière, audiovisuel)',
@@ -54,7 +54,7 @@ const servicePhases = [
   },
   {
     title: "Après l'événement",
-    image: '/services/apres-evenement.jpg',
+    image: '/services/apres-evenement.webp',
     items: [
       "Remise d'un rapport de clôture (photos, vidéos, bilans)",
       'Évaluation globale de la performance',
@@ -113,7 +113,7 @@ const caseStudies = [
       "L'accompagnement et la gestion des speakers",
       "La mise à disposition d'hôtesses et hôtes professionnels",
     ],
-    image: '/crono focus.JPG',
+    image: '/crono-focus.webp',
   },
   {
     title: 'Webscale',
@@ -127,7 +127,7 @@ const caseStudies = [
       'La supervision logistique et technique',
       "Le suivi et l'encadrement sur place",
     ],
-    image: '/webscal.jpg',
+    image: '/webscale.webp',
   },
   {
     title: 'Stork',
@@ -141,7 +141,7 @@ const caseStudies = [
       "La mise à disposition d'hôtesses et hôtes qualifiés",
       'La gestion logistique et le suivi opérationnel',
     ],
-    image: '/stock.jpeg',
+    image: '/stock.webp',
   },
 ]
 
@@ -194,7 +194,7 @@ function App() {
       <header className={`navbar ${navSmall ? 'navbar-small' : ''}`}>
         <div className="nav-brand">
           <div className="brand-icon">
-            <img src="/logo .jpg" alt="Eventico logo" />
+            <img src="/logo .jpg" alt="Eventico logo" loading="eager" decoding="async" />
           </div>
           <div className="brand-text">
             <span className="brand-mark gradient-text">EVENTICO</span>
@@ -238,7 +238,17 @@ function App() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-photo" style={{ backgroundImage: "url('/eventico.jpg')" }} />
+            <picture>
+              <source srcSet="/eventico.webp" type="image/webp" />
+              <img
+                src="/eventico.webp"
+                alt="Equipe Eventico pendant un événement"
+                className="hero-photo"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
           </div>
         </section>
 
@@ -271,10 +281,17 @@ function App() {
           <div className="service-grid reveal">
             {servicePhases.map((phase) => (
               <div key={phase.title} className="card soft">
-                <div
-                  className="service-cover"
-                  style={{ backgroundImage: `url(${encodeURI(phase.image)})` }}
-                />
+                <div className="service-cover">
+                  <picture>
+                    <source srcSet={phase.image} type="image/webp" />
+                    <img
+                      src={phase.image}
+                      alt={phase.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                </div>
                 <div className="card-top">
                   <div className="small-pill">{phase.title}</div>
                 </div>
@@ -359,10 +376,16 @@ function App() {
           <div className="case-grid reveal">
             {caseStudies.map((study, idx) => (
               <div key={study.title} className="card case">
-                <div
-                  className="case-cover"
-                  style={{ backgroundImage: `url('${encodeURI(study.image)}')` }}
-                >
+                <div className="case-cover">
+                  <picture>
+                    <source srcSet={study.image} type="image/webp" />
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <div className={`case-overlay gradient-${idx + 1}`} />
                   <span className="case-tag">{study.tag}</span>
                 </div>
