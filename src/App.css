@@ -258,6 +258,37 @@ h3 {
   margin: 0 auto;
 }
 
+.problems-marquee {
+  position: relative;
+  overflow: hidden;
+  padding-block: 24px;
+}
+
+.problems-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: problems-marquee 25s linear infinite;
+}
+
+@keyframes problems-marquee {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.problems-marquee:hover .problems-track {
+  animation-duration: 40s;
+}
+
+.problem-card {
+  flex: 0 0 auto;
+}
+
 .hero {
   display: flex;
   flex-direction: column-reverse;

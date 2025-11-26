@@ -306,15 +306,25 @@ function App() {
             <h2 className="section-title">Problèmes du marché que nous résolvons</h2>
             <p className="section-subtitle">Nous savons que l'organisation d'événements souffre de :</p>
           </div>
-          <div className="card-grid reveal">
-            {marketProblems.map((item, idx) => (
-              <div key={item} className="card shadowed">
-                <div className="icon-circle">
-                  {['📅', '🎯', '🧭', '🤝'][idx]}
+                    <div className="problems-marquee reveal">
+            <div className="problems-track">
+              {marketProblems.map((item, idx) => (
+                <div key={item} className="card shadowed problem-card">
+                  <div className="icon-circle">
+                    {['??', '??', '??', '??'][idx]}
+                  </div>
+                  <p>{item}</p>
                 </div>
-                <p>{item}</p>
-              </div>
-            ))}
+              ))}
+              {marketProblems.map((item, idx) => (
+                <div key={`${item}-dupe`} className="card shadowed problem-card">
+                  <div className="icon-circle">
+                    {['??', '??', '??', '??'][idx]}
+                  </div>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -491,6 +501,7 @@ function App() {
 }
 
 export default App
+
 
 
 
