@@ -27,7 +27,7 @@ const targets = [
     label: 'Webscale case',
   },
   {
-    input: 'stock (2).jpeg',
+    input: 'stock (3).jpeg',
     output: 'stock.webp',
     width: 1400,
     quality: 70,

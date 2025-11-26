@@ -284,17 +284,19 @@ function App() {
             </div>
           </div>
           <div className="hero-visual">
-            <picture>
-              <source srcSet="/eventico.webp" type="image/webp" />
-              <img
-                src="/eventico.webp"
-                alt="Equipe Eventico pendant un événement"
-                className="hero-photo"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-              />
-            </picture>
+            <div className="hero-image-frame">
+              <picture>
+                <source srcSet="/eventico.webp" type="image/webp" />
+                <img
+                  src="/eventico.webp"
+                  alt="Equipe Eventico pendant un événement"
+                  className="hero-photo"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              </picture>
+            </div>
           </div>
         </section>
 
@@ -396,8 +398,8 @@ function App() {
 
         <section id="pourquoi" className="section">
           <div className="section-header reveal">
-            <span className="eyebrow">NOTRE SIGNATURE</span>
             <h2 className="section-title">Pourquoi nous choisir ?</h2>
+            <span className="eyebrow mt-2">NOTRE SIGNATURE</span>
           </div>
           <div className="why-grid reveal">
             {whyUs.map((item, idx) => (
