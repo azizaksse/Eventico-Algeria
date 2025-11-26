@@ -224,10 +224,10 @@ function App() {
         </button>
         <nav className={`nav-links ${mobileNavOpen ? 'open' : ''}`}>
           <a href="#accueil" onClick={closeMobileNav}>Accueil</a>
-          <a href="#problemes" onClick={closeMobileNav}>Probl�mes du march�</a>
+          <a href="#problemes" onClick={closeMobileNav}>Problèmes du marché</a>
           <a href="#services" onClick={closeMobileNav}>Nos services</a>
           <a href="#packs" onClick={closeMobileNav}>Nos Packs</a>
-          <a href="#evenements" onClick={closeMobileNav}>�v�nements r�alis�s</a>
+          <a href="#evenements" onClick={closeMobileNav}>Événements réalisés</a>
           <a href="#pourquoi" onClick={closeMobileNav}>Pourquoi nous choisir ?</a>
           <a href="#contact" className="btn ghost" onClick={closeMobileNav}>CONTACTEZ NOUS</a>
         </nav>
