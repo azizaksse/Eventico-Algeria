@@ -144,10 +144,104 @@ const caseStudies = [
     ],
     image: '/stock.webp',
   },
+  {
+    title: 'Lebasa',
+    tag: 'Caritatif',
+    text:
+      "Dans le cadre de notre engagement social, nous avons participé à l'événement caritatif Lebasa durant le mois de Ramadan. Nous avons assuré :",
+    bullets: [
+      'Mobilisation de plus de 120 volontaires pour l\'encadrement et la gestion opérationnelle',
+      'Distribution gratuite de vêtements aux enfants défavorisés',
+      'Organisation permettant aux enfants de célébrer l\'Aïd dans de bonnes conditions',
+      'Démonstration de notre capacité à fournir des équipes compétentes',
+      'Gestion d\'un événement à fort impact social',
+    ],
+    image: '/nmero1.jpeg',
+  },
+  {
+    title: 'Événement Commercial & Communication',
+    tag: 'Commerce & Hôtellerie',
+    text:
+      'Nous avons conçu et réalisé un événement de A à Z dédié aux secteurs du commerce, de l\'hôtellerie et de l\'événementiel. Nous avons assuré :',
+    bullets: [
+      'Conception et organisation complète de l\'événement de A à Z',
+      'Développement des compétences des jeunes participants',
+      'Initiation aux exigences et opportunités des secteurs ciblés',
+      'Mise en place d\'un cadre structuré favorisant l\'apprentissage et l\'échange',
+      'Immersion professionnelle dans les domaines commerce, hôtellerie et événementiel',
+    ],
+    image: '/nmero 2.jpeg',
+  },
+  {
+    title: 'Pré-événement Lebasa',
+    tag: 'Préparation & Stratégie',
+    text:
+      'Nous avons organisé et piloté un pré-événement stratégique dédié à la préparation de l\'événement caritatif Lebasa. Nous avons assuré :',
+    bullets: [
+      'Élaboration du plan global de l\'événement et structuration de son organisation',
+      'Facilitation des échanges entre dirigeants et collaborateurs impliqués',
+      'Coordination renforcée et vision commune entre toutes les parties',
+      'Préparation efficace en amont de l\'événement caritatif',
+    ],
+    image: '/nmero3.jpeg',
+  },
+  {
+    title: 'Canton Fair Webscale',
+    tag: 'Digital & Tech',
+    text:
+      'Nous avons assuré la gestion de la nouvelle édition du Canton de Webscale, initié par Monsieur Abdelaoui. Nous avons assuré :',
+    bullets: [
+      'Organisation de A à Z de l\'événement',
+      'Coordination générale et gestion logistique complète',
+      'Mise à disposition d\'une équipe d\'hôtes et d\'hôtesses d\'accueil',
+      'Garantie d\'une expérience fluide et professionnelle pour les participants',
+    ],
+    image: '/nmero4.jpeg',
+  },
 ]
 
-const EventCard = ({ title, tag, text, bullets, image }) => (
-  <div className="event-card">
+const EventModal = ({ event, onClose }) => {
+  useEffect(() => {
+    const handleKey = (e) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [onClose])
+
+  if (!event) return null
+  const { title, tag, text, bullets, image } = event
+  return (
+    <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="modal-panel" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="20" height="20">
+            <path d="M18 6 6 18M6 6l12 12" strokeLinecap="round" />
+          </svg>
+        </button>
+        <div className="modal-image-wrap">
+          <img src={image} alt={title} />
+          <span className="event-tag modal-tag">{tag}</span>
+        </div>
+        <div className="modal-body">
+          <h2 className="modal-title">{title}</h2>
+          <p className="modal-text">{text}</p>
+          <ul className="modal-bullets">
+            {bullets.map((bullet) => (
+              <li key={bullet}>
+                <span className="modal-dot" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const EventCard = ({ title, tag, text, bullets, image, onClick }) => (
+  <div className="event-card" onClick={onClick} role="button" tabIndex={0}
+    onKeyDown={(e) => e.key === 'Enter' && onClick()}
+  >
     <div className="event-media">
       <picture>
         <source srcSet={image} type="image/webp" />
@@ -158,14 +252,7 @@ const EventCard = ({ title, tag, text, bullets, image }) => (
     <div className="event-body">
       <h3>{title}</h3>
       <p className="event-text">{text}</p>
-      <ul>
-        {bullets.map((bullet) => (
-          <li key={bullet}>
-            <span className="event-dot" />
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="event-card-hover-hint">Voir les détails →</div>
     </div>
   </div>
 )
@@ -194,6 +281,7 @@ const socialLinks = [
 function App() {
   const [navSmall, setNavSmall] = useState(false)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [selectedEvent, setSelectedEvent] = useState(null)
 
   useEffect(() => {
     const handleScroll = () => setNavSmall(window.scrollY > 16)
@@ -203,7 +291,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = mobileNavOpen ? 'hidden' : ''
+    document.body.style.overflow = (mobileNavOpen || selectedEvent) ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
@@ -226,7 +314,7 @@ function App() {
 
   return (
     <div className="page">
-      <header className={`navbar ${navSmall ? 'navbar-small' : ''}`}>
+      <header className={`navbar ${navSmall ? 'navbar-small' : ''}`} role="banner">
         <div className="nav-brand">
           <div className="brand-icon">
             <img src="/logo .jpg" alt="Eventico logo" loading="eager" decoding="async" />
@@ -259,6 +347,7 @@ function App() {
         {mobileNavOpen && <div className="nav-overlay" onClick={closeMobileNav} />}
       </header>
 
+      <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
       <main>
         <section id="accueil" className="hero section reveal">
           <div className="hero-bg">
@@ -302,13 +391,32 @@ function App() {
           </div>
         </section>
 
-        <section id="problemes" className="section muted">
+        <section id="evenements" className="section muted">
+          <div className="section-header reveal">
+            <span className="eyebrow">CAS</span>
+            <h2 className="section-title">Les événements réalisés cette année</h2>
+            <p className="section-subtitle">
+              Quelques exemples d'événements que nous avons accompagnés.
+            </p>
+          </div>
+          <div className="case-grid reveal">
+            {caseStudies.map((study) => (
+              <EventCard 
+                key={study.title} 
+                {...study} 
+                onClick={() => setSelectedEvent(study)} 
+              />
+            ))}
+          </div>
+        </section>
+
+        <section id="problemes" className="section">
           <div className="section-header reveal">
             <span className="eyebrow">LE MARCHÉ</span>
             <h2 className="section-title">Problèmes du marché que nous résolvons</h2>
             <p className="section-subtitle">Nous savons que l'organisation d'événements souffre de :</p>
           </div>
-                    <div className="problems-marquee reveal">
+          <div className="problems-marquee reveal">
             <div className="problems-track">
               {marketProblems.map((item, idx) => (
                 <div key={item} className="card shadowed problem-card">
@@ -330,7 +438,7 @@ function App() {
           </div>
         </section>
 
-        <section id="services" className="section">
+        <section id="services" className="section muted">
           <div className="section-header reveal">
             <span className="eyebrow">AVANT / pendant / APRÈS</span>
             <h2 className="section-title">Nos services</h2>
@@ -384,7 +492,7 @@ function App() {
           </div>
         </section>
 
-        <section id="packs" className="section muted">
+        <section id="packs" className="section">
           <div className="section-header reveal">
             <span className="eyebrow">OFFRES</span>
             <h2 className="section-title">Nos Packs</h2>
@@ -408,7 +516,7 @@ function App() {
           </div>
         </section>
 
-        <section id="pourquoi" className="section">
+        <section id="pourquoi" className="section muted">
           <div className="section-header reveal">
             <h2 className="section-title">Pourquoi nous choisir ?</h2>
             <span className="eyebrow mt-2">NOTRE SIGNATURE</span>
@@ -421,21 +529,6 @@ function App() {
                 </div>
                 <p>{item}</p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="evenements" className="section muted">
-          <div className="section-header reveal">
-            <span className="eyebrow">CAS</span>
-            <h2 className="section-title">Les événements réalisés cette année</h2>
-            <p className="section-subtitle">
-              Quelques exemples d'événements que nous avons accompagnés.
-            </p>
-          </div>
-          <div className="case-grid reveal">
-            {caseStudies.map((study, idx) => (
-              <EventCard key={study.title} {...study} />
             ))}
           </div>
         </section>

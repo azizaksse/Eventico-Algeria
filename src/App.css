@@ -50,30 +50,34 @@
 main {
   position: relative;
   z-index: 1;
+  padding-top: 88px;
 }
 
 .navbar {
-  position: sticky;
-  top: 18px;
-  margin: 0 22px;
-  z-index: 20;
+  position: fixed;
+  top: 16px;
+  left: 22px;
+  right: 22px;
+  margin: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 36px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
-  backdrop-filter: blur(14px);
+  padding: 16px 36px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-radius: 18px;
   transition: all 0.35s ease;
   animation: navGlow 8s ease-in-out infinite alternate;
 }
 
 .navbar-small {
-  padding: 14px 28px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.16);
-  transform: translateY(-6px);
+  padding: 12px 28px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 @keyframes navGlow {
@@ -325,7 +329,9 @@ h3 {
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.75) 40%, rgba(255, 255, 255, 0.7) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.62) 40%, rgba(255, 255, 255, 0.55) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .hero-inner {
@@ -342,6 +348,7 @@ h3 {
 .gradient-text {
   background: linear-gradient(120deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -400,10 +407,47 @@ h3 {
 }
 
 .hero-paragraph {
-  color: var(--subtext);
-  font-size: 16px;
+  position: relative;
+  color: #1e293b;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 500;
+  line-height: 1.75;
   margin: 0 0 26px;
-  max-width: 640px;
+  max-width: 600px;
+  padding: 18px 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(224, 248, 252, 0.62) 50%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -1px 0 rgba(0, 151, 167, 0.08) inset;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+
+/* Shine streak across the top */
+.hero-paragraph::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.0) 100%
+  );
+  border-radius: 20px 20px 0 0;
+  pointer-events: none;
 }
 
 .hero-actions {
@@ -1207,7 +1251,8 @@ h3 {
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
   border: 1px solid rgba(148, 163, 184, 0.4);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .event-card:hover {
@@ -1302,5 +1347,158 @@ h3 {
   border-radius: 50%;
   background: #e11d48;
   flex-shrink: 0;
+}
+
+.event-card-hover-hint {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.25s ease;
+}
+
+.event-card:hover .event-card-hover-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 30, 0.6);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-panel {
+  position: relative;
+  background: #fff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.4) inset;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(40px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  display: grid;
+  place-items: center;
+  color: #0f172a;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+
+.modal-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #f1f5f9;
+}
+
+.modal-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-tag {
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  padding: 10px 16px;
+}
+
+.modal-body {
+  padding: 40px;
+}
+
+.modal-title {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.modal-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #475467;
+  margin-bottom: 24px;
+}
+
+.modal-bullets {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.modal-bullets li {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.modal-dot {
+  margin-top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(155, 27, 50, 0.15);
+}
+
+@media (max-width: 640px) {
+  .modal-backdrop { padding: 12px; }
+  .modal-image-wrap { height: 260px; }
+  .modal-body { padding: 24px; }
+  .modal-close { top: 12px; right: 12px; }
 }
 
