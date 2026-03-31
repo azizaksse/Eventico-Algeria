@@ -71,23 +71,12 @@ main {
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-radius: 18px;
   transition: all 0.35s ease;
-  animation: navGlow 8s ease-in-out infinite alternate;
 }
 
 .navbar-small {
   padding: 12px 28px;
   box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
   background: rgba(255, 255, 255, 0.92);
-}
-
-@keyframes navGlow {
-  0% {
-    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12);
-  }
-
-  100% {
-    box-shadow: 0 18px 52px rgba(15, 23, 42, 0.16);
-  }
 }
 
 .nav-brand {
@@ -585,7 +574,6 @@ h3 {
   mix-blend-mode: screen;
   transition: opacity 0.4s ease, transform 0.6s ease;
   z-index: -1;
-  animation: glassShift 10s ease-in-out infinite alternate;
 }
 
 .card.shadowed {
@@ -1060,103 +1048,7 @@ h3 {
   font-weight: 700;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
 
-.reveal.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal.in-view .card,
-.reveal.in-view .card.case,
-.reveal.in-view .card.pack,
-.reveal.in-view .card.feature,
-.reveal.in-view .event-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card-grid .card,
-.service-grid .card,
-.pack-grid .card,
-.why-grid .card,
-.case-grid .card {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.case-grid .event-card {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.card-grid.in-view .card,
-.service-grid.in-view .card,
-.pack-grid.in-view .card,
-.why-grid.in-view .card,
-.case-grid.in-view .card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.case-grid.in-view .event-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card-grid.in-view .card:nth-child(1),
-.service-grid.in-view .card:nth-child(1),
-.pack-grid.in-view .card:nth-child(1),
-.why-grid.in-view .card:nth-child(1),
-.case-grid.in-view .card:nth-child(1) {
-  transition-delay: 0.05s;
-}
-
-.card-grid.in-view .card:nth-child(2),
-.service-grid.in-view .card:nth-child(2),
-.pack-grid.in-view .card:nth-child(2),
-.why-grid.in-view .card:nth-child(2),
-.case-grid.in-view .card:nth-child(2) {
-  transition-delay: 0.12s;
-}
-
-.card-grid.in-view .card:nth-child(3),
-.service-grid.in-view .card:nth-child(3),
-.pack-grid.in-view .card:nth-child(3),
-.why-grid.in-view .card:nth-child(3),
-.case-grid.in-view .card:nth-child(3) {
-  transition-delay: 0.18s;
-}
-
-.card-grid.in-view .card:nth-child(4),
-.service-grid.in-view .card:nth-child(4),
-.pack-grid.in-view .card:nth-child(4),
-.why-grid.in-view .card:nth-child(4),
-.case-grid.in-view .card:nth-child(4) {
-  transition-delay: 0.24s;
-}
-
-.card-grid.in-view .card:nth-child(5),
-.pack-grid.in-view .card:nth-child(5),
-.case-grid.in-view .card:nth-child(5) {
-  transition-delay: 0.3s;
-}
-
-@keyframes glassShift {
-  0% {
-    background-position: 0% 0%, 100% 0%;
-  }
-
-  100% {
-    background-position: 20% 20%, 80% 10%;
-  }
-}
 
 @media (max-width: 1024px) {
   .navbar {

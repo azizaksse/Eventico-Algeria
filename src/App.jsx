@@ -299,18 +299,7 @@ function App() {
 
   const closeMobileNav = () => setMobileNavOpen(false)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('in-view')
-        })
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' },
-    )
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+
 
   return (
     <div className="page">
@@ -349,7 +338,7 @@ function App() {
 
       <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
       <main>
-        <section id="accueil" className="hero section reveal">
+        <section id="accueil" className="hero section">
           <div className="hero-bg">
             <picture>
               <source srcSet="/eventico.webp" type="image/webp" />
@@ -392,14 +381,14 @@ function App() {
         </section>
 
         <section id="evenements" className="section muted">
-          <div className="section-header reveal">
+          <div className="section-header">
             <span className="eyebrow">CAS</span>
             <h2 className="section-title">Les événements réalisés cette année</h2>
             <p className="section-subtitle">
               Quelques exemples d'événements que nous avons accompagnés.
             </p>
           </div>
-          <div className="case-grid reveal">
+          <div className="case-grid">
             {caseStudies.map((study) => (
               <EventCard 
                 key={study.title} 
@@ -411,12 +400,12 @@ function App() {
         </section>
 
         <section id="problemes" className="section">
-          <div className="section-header reveal">
+          <div className="section-header">
             <span className="eyebrow">LE MARCHÉ</span>
             <h2 className="section-title">Problèmes du marché que nous résolvons</h2>
             <p className="section-subtitle">Nous savons que l'organisation d'événements souffre de :</p>
           </div>
-          <div className="problems-marquee reveal">
+          <div className="problems-marquee">
             <div className="problems-track">
               {marketProblems.map((item, idx) => (
                 <div key={item} className="card shadowed problem-card">
@@ -439,14 +428,14 @@ function App() {
         </section>
 
         <section id="services" className="section muted">
-          <div className="section-header reveal">
+          <div className="section-header">
             <span className="eyebrow">AVANT / pendant / APRÈS</span>
             <h2 className="section-title">Nos services</h2>
             <p className="section-subtitle">
               Une prise en charge avant, pendant et après votre événement.
             </p>
           </div>
-          <div className="service-grid reveal">
+          <div className="service-grid">
             {servicePhases.map((phase) => (
               <div key={phase.title} className="card soft">
                 <div className="service-cover">
@@ -471,7 +460,7 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="timeline reveal">
+          <div className="timeline">
             <div className="timeline-track">
               <div className="timeline-progress" />
             </div>
@@ -493,12 +482,12 @@ function App() {
         </section>
 
         <section id="packs" className="section">
-          <div className="section-header reveal">
+          <div className="section-header">
             <span className="eyebrow">OFFRES</span>
             <h2 className="section-title">Nos Packs</h2>
             <p className="section-subtitle">Des offres adaptées à vos objectifs.</p>
           </div>
-          <div className="pack-grid reveal">
+          <div className="pack-grid">
             {packs.map((pack) => (
               <div key={pack.title} className="card pack">
                 <div className="pack-badge">{pack.badge}</div>
@@ -517,11 +506,11 @@ function App() {
         </section>
 
         <section id="pourquoi" className="section muted">
-          <div className="section-header reveal">
+          <div className="section-header">
             <h2 className="section-title">Pourquoi nous choisir ?</h2>
             <span className="eyebrow mt-2">NOTRE SIGNATURE</span>
           </div>
-          <div className="why-grid reveal">
+          <div className="why-grid">
             {whyUs.map((item, idx) => (
               <div key={item} className="card feature">
                 <div className="icon-circle small">
@@ -533,7 +522,7 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" className="section contact-block reveal">
+        <section id="contact" className="section contact-block">
           <div className="cta-card">
             <span className="eyebrow center">TRAVAILLONS ENSEMBLE</span>
             <h2 className="section-title">Prêt à donner vie à votre événement ?</h2>
