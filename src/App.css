@@ -753,8 +753,10 @@ h3 {
 
 .pack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 24px;
 }
 
 .card.pack {
@@ -801,6 +803,18 @@ h3 {
   position: absolute;
   left: 0;
   color: var(--secondary);
+}
+
+.pack-note {
+  margin: 4px 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(0, 151, 167, 0.08);
+  border: 1px solid rgba(0, 151, 167, 0.18);
+  color: #0f766e;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .why-grid {

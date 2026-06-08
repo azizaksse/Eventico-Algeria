@@ -67,29 +67,27 @@ const servicePhases = [
 const packs = [
   {
     badge: '01',
-    title: 'Pack Essentiel',
-    bullets: ['Les bases pour un événement organisé et structuré.'],
+    title: 'Pack Staff Pro',
+    note: '✅ Une organisation fluide et professionnelle sur le terrain.',
+    bullets: [
+      'Staff événementiel qualifié',
+      "Hôtesses d'accueil",
+      'Équipe Check-in & gestion des invités',
+      'Système de Check-in disponible',
+      'Chefs de zone pour superviser les équipes',
+      'Sélection du profil des organisateurs selon votre besoin',
+    ],
   },
   {
     badge: '02',
     title: 'Pack Volontaires',
+    note: '✅ Une solution pratique et économique pour vos événements.',
     bullets: [
-      "Organisation de l'événement",
-      'Couverture médiatique',
-      'Fourniture de bénévoles (organisateurs & photographes)',
-    ],
-  },
-  {
-    badge: '03',
-    title: 'Pack Organisation Complète',
-    bullets: ["Prise en charge totale de l'événement, de A à Z"],
-  },
-  {
-    badge: '04',
-    title: 'Pack Documentation Pro',
-    bullets: [
-      'Vidéos et photos professionnelles',
-      'Équipe dédiée aux réseaux sociaux',
+      "Volontaires pour accueil et orientation",
+      'Assistance des participants',
+      'Support organisationnel sur le terrain',
+      'Gestion des flux et accompagnement du public',
+      'Encadrement par notre équipe Eventico',
     ],
   },
 ]
@@ -374,7 +372,7 @@ function App() {
                 <a href="#services" className="text-link">Découvrir nos services</a>
               </div>
               <div className="contact-strip">
-                +2137 82 46 15 02 / +2135 42 88 50 55 / +2135 52 55 33 24
+                +213 542 885 055 / +213 542 56 78 20 / +213 561 46 13 68
               </div>
             </div>
           </div>
@@ -497,6 +495,7 @@ function App() {
                     <li key={bullet}>{bullet}</li>
                   ))}
                 </ul>
+                {pack.note && <p className="pack-note">{pack.note}</p>}
                 <a href="#contact" className="btn primary ghostless">
                   Demander un devis
                 </a>
@@ -529,12 +528,12 @@ function App() {
             <p className="section-subtitle">
               Parlez-nous de votre vision, nous la transformons en expérience.
             </p>
-            <a href="https://wa.me/213782461502" className="btn primary large">
+            <a href="https://wa.me/213542885055" className="btn primary large">
               CONTACTEZ NOUS
             </a>
             <div className="contact-lines">
               <span>
-                +2137 82 46 15 02 / +2135 42 88 50 55 / +2135 52 55 33 24
+                +213 542 885 055 / +213 542 56 78 20 / +213 561 46 13 68 / +213 791 146 127
               </span>
               <span>EVENTICO.ALGERIA</span>
             </div>
@@ -573,7 +572,7 @@ function App() {
       </main>
       <a
         className="floating-whatsapp"
-        href="https://wa.me/213782461502"
+        href="https://wa.me/213542885055"
         target="_blank"
         rel="noreferrer"
         aria-label="Contact Eventico sur WhatsApp"
