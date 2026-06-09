@@ -753,10 +753,16 @@ h3 {
 
 .pack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 900px;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 960px;
   margin: 0 auto;
   gap: 24px;
+}
+
+@media (max-width: 640px) {
+  .pack-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card.pack {

@@ -67,33 +67,6 @@ const servicePhases = [
 const packs = [
   {
     badge: '01',
-    title: 'Pack Essentiel',
-    bullets: ['Les bases pour un événement organisé et structuré.'],
-  },
-  {
-    badge: '02',
-    title: 'Pack Volontaires',
-    bullets: [
-      "Organisation de l'événement",
-      'Couverture médiatique',
-      'Fourniture de bénévoles (organisateurs & photographes)',
-    ],
-  },
-  {
-    badge: '03',
-    title: 'Pack Organisation Complète',
-    bullets: ["Prise en charge totale de l'événement, de A à Z"],
-  },
-  {
-    badge: '04',
-    title: 'Pack Documentation Pro',
-    bullets: [
-      'Vidéos et photos professionnelles',
-      'Équipe dédiée aux réseaux sociaux',
-    ],
-  },
-  {
-    badge: '05',
     title: 'Pack Staff Pro',
     note: '✅ Une organisation fluide et professionnelle sur le terrain.',
     bullets: [
@@ -106,15 +79,40 @@ const packs = [
     ],
   },
   {
-    badge: '06',
-    title: 'Pack Volontaires Pro',
+    badge: '02',
+    title: 'Pack Volontaires',
     note: '✅ Une solution pratique et économique pour vos événements.',
     bullets: [
-      "Volontaires pour accueil et orientation",
+      'Volontaires pour accueil et orientation',
       'Assistance des participants',
       'Support organisationnel sur le terrain',
       'Gestion des flux et accompagnement du public',
       'Encadrement par notre équipe Eventico',
+    ],
+  },
+  {
+    badge: '03',
+    title: 'Pack Organisation Complète',
+    note: '✅ Vous profitez de votre événement, nous gérons le reste.',
+    bullets: [
+      'Planification et coordination complète',
+      'Gestion des équipes et des invités',
+      'Supervision terrain durant tout l\'événement',
+      'Gestion du déroulement et du timing',
+      'Organisation générale et logistique',
+    ],
+  },
+  {
+    badge: '04',
+    title: 'Pack Media & Marketing',
+    note: '✅ Donnez plus d\'impact et de visibilité à votre événement.',
+    bullets: [
+      'Photos et vidéos professionnelles',
+      'Équipe dédiée aux réseaux sociaux',
+      'Création de contenu en direct',
+      'Couverture Instagram / Facebook / TikTok',
+      'Aftermovie & highlights de l\'événement',
+      'Support marketing et communication',
     ],
   },
 ]
