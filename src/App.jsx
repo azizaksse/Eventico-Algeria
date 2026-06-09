@@ -67,6 +67,33 @@ const servicePhases = [
 const packs = [
   {
     badge: '01',
+    title: 'Pack Essentiel',
+    bullets: ['Les bases pour un événement organisé et structuré.'],
+  },
+  {
+    badge: '02',
+    title: 'Pack Volontaires',
+    bullets: [
+      "Organisation de l'événement",
+      'Couverture médiatique',
+      'Fourniture de bénévoles (organisateurs & photographes)',
+    ],
+  },
+  {
+    badge: '03',
+    title: 'Pack Organisation Complète',
+    bullets: ["Prise en charge totale de l'événement, de A à Z"],
+  },
+  {
+    badge: '04',
+    title: 'Pack Documentation Pro',
+    bullets: [
+      'Vidéos et photos professionnelles',
+      'Équipe dédiée aux réseaux sociaux',
+    ],
+  },
+  {
+    badge: '05',
     title: 'Pack Staff Pro',
     note: '✅ Une organisation fluide et professionnelle sur le terrain.',
     bullets: [
@@ -79,8 +106,8 @@ const packs = [
     ],
   },
   {
-    badge: '02',
-    title: 'Pack Volontaires',
+    badge: '06',
+    title: 'Pack Volontaires Pro',
     note: '✅ Une solution pratique et économique pour vos événements.',
     bullets: [
       "Volontaires pour accueil et orientation",
