@@ -221,6 +221,33 @@ const caseStudies = [
     ],
     image: '/nmero4.jpeg',
   },
+  {
+    title: 'Urban Trail 2026',
+    tag: 'Événement sportif',
+    text:
+      "Dans le cadre de l'Urban Trail 2026, EVENTICO a assuré la mobilisation et l'encadrement des volontaires ainsi que la gestion opérationnelle du Check-in. Nous avons assuré :",
+    bullets: [
+      'Mobilisation et encadrement des volontaires',
+      'Gestion du Check-in',
+      'Accueil et orientation des participants',
+      'Coordination terrain',
+    ],
+    image: '/urban-trail-2026.jpg',
+  },
+  {
+    title: 'Groupe El Ittihad',
+    tag: 'Événement touristique',
+    text:
+      "EVENTICO a accompagné le projet de l'idée à la réalisation, en prenant en charge sa conception, sa préparation, sa communication et son organisation opérationnelle. Nous avons assuré :",
+    bullets: [
+      'Développement du concept',
+      'Stratégie marketing et communication',
+      'Préparation et coordination',
+      'Organisation du jour J',
+      'Gestion globale du projet de A à Z',
+    ],
+    image: '/Groupe El Ittihad.jpg',
+  },
 ]
 
 const EventModal = ({ event, onClose }) => {
@@ -397,7 +424,7 @@ function App() {
                 <a href="#services" className="text-link">Découvrir nos services</a>
               </div>
               <div className="contact-strip">
-                +213 542 885 055 / +213 542 56 78 20 / +213 561 46 13 68
+                +213 555 29 26 64 / +213 542 885 055
               </div>
             </div>
           </div>
@@ -553,12 +580,12 @@ function App() {
             <p className="section-subtitle">
               Parlez-nous de votre vision, nous la transformons en expérience.
             </p>
-            <a href="https://wa.me/213542885055" className="btn primary large">
+            <a href="https://wa.me/213555292664" className="btn primary large">
               CONTACTEZ NOUS
             </a>
             <div className="contact-lines">
               <span>
-                +213 542 885 055 / +213 542 56 78 20 / +213 561 46 13 68 / +213 791 146 127
+                +213 555 29 26 64 / +213 542 885 055
               </span>
               <span>EVENTICO.ALGERIA</span>
             </div>
@@ -597,7 +624,7 @@ function App() {
       </main>
       <a
         className="floating-whatsapp"
-        href="https://wa.me/213542885055"
+        href="https://wa.me/213555292664"
         target="_blank"
         rel="noreferrer"
         aria-label="Contact Eventico sur WhatsApp"
